@@ -1,5 +1,5 @@
 body {
-    background: #123;
+    background: #252B48;
     padding: 20px;
 }
 .board {
@@ -17,7 +17,6 @@ body {
     
 }
 .card{
-    
     position: relative;
     width: 100%;
     height: 100%;
@@ -38,7 +37,7 @@ body {
     max-width: 100%;
 }
 .card .back{
-    background-color: #468;
+    background-color: #5B9A8B;
     transform: rotateY(180deg);
 }
 .card-outer.flipped .card{
@@ -48,4 +47,17 @@ body {
     color: white;
     padding: 50px 0;
 
+}
+.resetButton {
+    background-color: #f8f0b7;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.resetButton:hover {
+    background-color: #F7E987;
 }
