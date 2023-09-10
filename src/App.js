@@ -13,42 +13,36 @@ function App() {
   const [activeCards, setActiveCards] = useState([]);
   const [foundMatches, setFoundMatches] = useState([]);
   const [clicks, setClicks] = useState(0);
-  const [wonAlert, setWonAlert] = useState(false);
+  const [winAlert, setWinAlert] = useState(false);
 
-  const flipCard = async (index) => {
+  const flipCard = (index) => {
     playClick();
     if (!activeCards.includes(index)){
       if (activeCards.length === 0) {
       setActiveCards([index]);
     };
 
-    const delay = ms => {
-      return new Promise (res => res, ms)
-    }
-
     if (activeCards.length === 1) {
       const firstIndex = activeCards[0];
       const secondIndex = index;
-      
 
       if (cards[firstIndex] === cards[secondIndex]) {
         playRight();
         if (foundMatches.length + 2 === cards.length) {
           playWin();
-          setWonAlert(true);
+          setWinAlert(true);
         };
 
-        setFoundMatches(prev => [...prev, firstIndex, secondIndex]) 
-      } else {
+        setFoundMatches(prev => [...prev, firstIndex, secondIndex]);
+      } 
 
-      };
       setActiveCards(prev => [...prev, index])
     };
 
     if (activeCards.length === 2) {
-      await delay(3000)
-      setActiveCards([])
-    }
+      setActiveCards([index]);
+    };
+
     setClicks(prev => prev + 1)
   }
   };
@@ -70,30 +64,38 @@ function App() {
     setActiveCards([]);
     setFoundMatches([]);
     setClicks(0);
-    setWonAlert(false)
+    setWinAlert(false)
   };
   return (
     <div>
-      <div className="board">
-        {cards.map((card, index) => {
-          const flippedToFront = (activeCards.indexOf(index) !== -1) || (foundMatches.indexOf(index) !== -1)
-          return (
-            <div className={"card-outer " + (flippedToFront ? "flipped" : '')} onClick={() => flipCard(index)}>
-              <div className={"card"}>
-                <div className="front">
-                <img src={card} alt="" />
+      <div className="wrapper">
+        <div className="clicksAndButton">
+          <div className="clicks">
+            Clicks: {clicks}
+          </div>
+          <div className="resetButtonWrapper">
+            <button className="resetButton" onClick={resetCards}>RESET</button>
+          </div>
+        </div>
+        <div className="board">
+          {cards.map((card, index) => {
+            const flippedToFront = (activeCards.indexOf(index) !== -1) || (foundMatches.indexOf(index) !== -1)
+            return (
+              <div key={index} className={"card-outer " + (flippedToFront ? "flipped" : '')} onClick={() => flipCard(index)}>
+                <div className={"card"}>
+                  <div className="front">
+                  <img src={card} alt="" />
+                  </div>
+                  <div className="back"></div>
                 </div>
-                <div className="back"></div>
-              </div>
-            </div>)
-        })}
-        <div className="clicks">
-        Clicks:{clicks}
+              </div>)
+          })}
+        </div>
+        <div className="flexItem-3">
+
+        </div>
       </div>
-      </div>
-      <button className="resetButton" onClick={resetCards}>RESET</button>
-      <button onClick={() => {setWonAlert(prev => !prev)}}>SET WON(test)</button>
-      {wonAlert && <WinAlert onCloseWonAlert={() => setWonAlert(false)} onResetGame={resetCards}/>}
+      {winAlert && <WinAlert onCloseWonAlert={() => setWinAlert(false)} onResetGame={resetCards} clicks={clicks}/>}
     </div>
   );
 }
