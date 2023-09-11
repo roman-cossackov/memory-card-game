@@ -1,9 +1,10 @@
-body {
+body{
     background: #252B48;
     padding: 20px;
     text-align: center;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
-.board {
+.board{
     width: calc(100vh - 40px);
     max-width: 100vw;
     display: grid;
@@ -39,6 +40,7 @@ body {
     max-width: 100%;
 }
 .card .back{
+    border: 1px solid black;
     background-color: #5B9A8B;
     transform: rotateY(180deg);
 }
@@ -58,28 +60,41 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
+    box-shadow: -2px 5px 0px black;
 }
-
 .resetButton:hover {
     background-color: #F7E987;
+    
 }
-
+.resetButton:active{
+    position: relative;
+    top: 3px;
+    right: 1px;
+    box-shadow: -2px 3px 0px black;
+}
 .resetButtonWrapper{
     
 }
-
 .wrapper{
+    width: 100%;
     text-align: left;
     display: flex;
     margin: 0px auto;
     justify-content: center;
-
 }
 .flexItem-3{
     width: 100px;
 }
 
-@media (max-width: 426px){
+@media (max-width: 769px){
+    .board{
+        width: 100%;
+        max-width: 100%;
+        display: grid;
+        margin: auto;
+        grid-gap: 10px;
+        grid-template-columns: repeat(6, 1fr);   
+    }
     .clicks{
         color: white;
         margin: 10px 0;
