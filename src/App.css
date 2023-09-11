@@ -64,16 +64,12 @@ body{
 }
 .resetButton:hover {
     background-color: #F7E987;
-    
 }
 .resetButton:active{
     position: relative;
     top: 3px;
     right: 1px;
     box-shadow: -2px 3px 0px black;
-}
-.resetButtonWrapper{
-    
 }
 .wrapper{
     width: 100%;
@@ -85,7 +81,6 @@ body{
 .flexItem-3{
     width: 100px;
 }
-
 @media (max-width: 769px){
     .board{
         width: 100%;
