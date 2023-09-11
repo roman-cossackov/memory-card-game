@@ -11,7 +11,7 @@ const WinAlert = (props) => {
           <div className={styles.modalHeader}>
             YOU WON!!!
           </div>
-          <div className="modalContent">
+          <div className={styles.modalContent}>
             It took you {props.clicks} clicks
           </div>
           <div className={styles.alertButton}>
