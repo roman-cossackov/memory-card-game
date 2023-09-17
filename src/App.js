@@ -3,7 +3,7 @@ import { shuffle } from "lodash";
 
 import "./App.css";
 import Images from "./components/Images";
-import WinAlert from "./components/WinAlert/WinAlert";
+import WinAlert from "./components/WinAlert/WInAlert";
 import sound1 from "./assets/click_sound.wav";
 import sound2 from "./assets/right_sound.mp3";
 import sound3 from "./assets/win_sound.wav";
